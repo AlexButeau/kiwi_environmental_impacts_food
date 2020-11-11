@@ -1,45 +1,21 @@
 import React from 'react';
-import './header.scss';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
-// this header is using Bootstrap as an exercise
+// this header is using React Bootstrap as an exercise
 
 function Header() {
   return (
-    <div className="header">
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-        <a className="navbar-brand" href="#">
-          Kiwi
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Accueil
-                <span className="sr-only">(current)</span>
-                {/* to be reviewed */}
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <Navbar bg="primary" expand="lg">
+      <Navbar.Brand href="#home">KIWI</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="#home">Accueil</Nav.Link>
+          <Nav.Link href="#link">Contact</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
