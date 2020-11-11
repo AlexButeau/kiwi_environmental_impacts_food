@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Contact from './Contact';
 import Product from './Product';
+import Header from './Header';
+import Footer from './Footer';
 
 function App() {
   return (
