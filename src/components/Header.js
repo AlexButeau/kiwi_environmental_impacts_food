@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import './styles/header.scss';
 
 // this header is using React Bootstrap as an exercise
 
