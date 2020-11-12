@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.scss';
+import './styles/header.scss';
 
 // this header is using Bootstrap as an exercise
 
