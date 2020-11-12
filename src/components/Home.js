@@ -6,7 +6,7 @@ function Home() {
     <div className="home">
       {/* <Searchbar /> */}
       <Suggestions />
-      {/*careful, the rendering of this element will have to be conditional */}
+      {/* careful, the rendering of this element will have to be conditional */}
     </div>
   );
 }
