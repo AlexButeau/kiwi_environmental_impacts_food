@@ -3,11 +3,20 @@ import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const productId = product.id;
-  // careful, the data structure could change and is still in construction
   const productName = product.name;
+  const { imgUrl } = product;
   return (
-    <div className="productCard">
-      <Link to={`/${productId}`}> {productName}</Link>
+    <div
+      className="product-card"
+      style={{
+        backgroundImage: `url(${imgUrl})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="overlay">
+        <Link to={`/${productId}`}> {productName}</Link>
+      </div>
     </div>
   );
 };
