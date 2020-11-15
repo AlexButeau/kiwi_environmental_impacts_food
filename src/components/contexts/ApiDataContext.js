@@ -29,6 +29,10 @@ export default function ApiDataContextProvider({ children }) {
           console.log('Request canceled', err.message);
         }
       });
+
+    return function cleanup() {
+      source.cancel('Operation canceled by the user.');
+    };
   };
 
   const fetchApiDataId = (id) => {
@@ -49,6 +53,10 @@ export default function ApiDataContextProvider({ children }) {
           console.log('Request canceled', err.message);
         }
       });
+
+    return function cleanup() {
+      source.cancel('Operation canceled by the user.');
+    };
   };
 
   // where should the return be? to cancel the request? probably not here cuz it should in a useEffect hook, so it should in the consumer component, but then where should we declare the variables for cancel tokens?
@@ -61,7 +69,7 @@ export default function ApiDataContextProvider({ children }) {
     </ApiDataContext.Provider>
   );
 
-  /* on the page consuming the data: 
+  /* on the page consuming the data:
   const { proverbs, fetchProverbs } = useContext(ProverbsContext);
   const { translate } = useContext(LanguagesContext); <- useful only if second context
 

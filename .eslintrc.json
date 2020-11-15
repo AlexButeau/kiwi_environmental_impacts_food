@@ -24,7 +24,9 @@
     "react/jsx-curly-newline": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/self-closing-comp": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off", 
+    "react/max-len": "off",
+    "operator-linebreak":"off"
   },
   "parser": "babel-eslint"
 }
