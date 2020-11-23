@@ -8,11 +8,11 @@ import './styles/header.scss';
 function Header() {
   return (
     <Navbar bg="primary" expand="lg">
-      <Navbar.Brand href="#home">KIWI</Navbar.Brand>
+      <Navbar.Brand href="/">KIWI</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Accueil</Nav.Link>
+          <Nav.Link href="/">Accueil</Nav.Link>
           <Nav.Link href="#link">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
