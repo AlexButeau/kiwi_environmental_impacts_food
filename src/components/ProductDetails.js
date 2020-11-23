@@ -85,7 +85,13 @@ const ProductDetails = ({
         <p>Score global</p>
         <p className="product-DQR">
           DQR : {productDetails.DQR}{' '}
-          <span className="color-dot" style={{ backgroundColor: 'red' }}></span>
+          <span
+            className="color-dot"
+            style={{
+              backgroundColor:
+                productDetails.globalScore > 3 ? 'orange' : 'light green',
+            }}
+          />
         </p>
       </div>
     </div>
