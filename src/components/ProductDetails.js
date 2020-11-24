@@ -206,7 +206,7 @@ const ProductDetails = ({
               <tr>
                 <td>{product.indicateur}</td>
                 <td>{product.unit}</td>
-                <td>{(Math.round(product.value * 100) / 100).toFixed(1)}</td>
+                <td>{(Math.round(product.value * 100) / 100).toFixed(2)}</td>
               </tr>
             ))}
         </table>
