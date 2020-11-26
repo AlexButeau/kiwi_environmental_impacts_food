@@ -13,6 +13,8 @@ const ProductDetails = ({
     productName: '',
     DQR: 0,
     globalScore: 0,
+    plane: '',
+    indicateurs: [],
   });
 
   // fetching the ap data for this specific product
@@ -34,7 +36,14 @@ const ProductDetails = ({
             'DQR_-_Note_de_qualité_de_la_donnée_(1_excellente___5_très_faible)'
           ],
         globalScore: Number(stringScore),
+        plane: apiData[0].results[0]['Transport_par_avion_(1___par_avion)'],
         indicateurs: [
+          {
+            indicateur: 'Occupation du sol',
+            unit: 'Pt',
+            value:
+              apiData[0].results[0]['Utilisation_du_sol_(Pt/kg_de_produit)'],
+          },
           {
             indicateur: 'Eutrophisation terrestre',
             unit: 'mol N eq',
@@ -193,22 +202,28 @@ const ProductDetails = ({
           />
         </p>
       </div>
+      {/* <div classNmae="plane-transport">
+        Transport par avion : {productDetails.plane ? 'oui' : 'non'}
+      </div> */}
       <div className="table-impacts">
         <div className="header">Indicateurs</div>
         <table>
-          <tr>
-            <th>Indicateur</th>
-            <th>Unité (par kg de produit)</th>
-            <th>Valeur</th>
-          </tr>
-          {productDetails.indicateurs &&
-            productDetails.indicateurs.map((product) => (
-              <tr>
-                <td>{product.indicateur}</td>
-                <td>{product.unit}</td>
-                <td>{(Math.round(product.value * 100) / 100).toFixed(2)}</td>
-              </tr>
-            ))}
+          <tbody>
+            <tr>
+              <th>Indicateur</th>
+              <th>Unité (par kg de produit)</th>
+              <th>Valeur</th>
+            </tr>
+
+            {productDetails.indicateurs &&
+              productDetails.indicateurs.map((product) => (
+                <tr>
+                  <td>{product.indicateur}</td>
+                  <td>{product.unit}</td>
+                  <td>{(Math.round(product.value * 100) / 100).toFixed(2)}</td>
+                </tr>
+              ))}
+          </tbody>
         </table>
       </div>
     </div>

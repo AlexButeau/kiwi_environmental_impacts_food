@@ -1,6 +1,6 @@
 @import './global.scss';
 
-$baseColor: #5dab7c;
+$baseColor: $darker;
 $borderRadius: 10px;
 $imageBig: 100px;
 $imageSmall: 60px;
@@ -72,43 +72,49 @@ $padding: 10px;
 table {
   width: 100%;
 
-  td,
-  th {
-    color: darken($baseColor, 40%);
-    padding: $padding;
-  }
+  tbody {
+    width: 100%;
 
-  td {
-    text-align: left;
-    vertical-align: middle;
-
-    &:last-child {
-      font-size: 0.95em;
-      line-height: 1.4;
-      text-align: right;
+    td,
+    th {
+      color: darken($baseColor, 40%);
+      padding: $padding;
     }
-  }
 
-  th {
-    background-color: lighten($baseColor, 30%);
-    font-weight: 600;
-    &:last-child {
-      text-align: right;
-    }
-  }
+    td {
+      text-align: left;
+      vertical-align: middle;
 
-  tr {
-    &:nth-child(2n) {
-      background-color: white;
+      &:last-child {
+        font-size: 0.95em;
+        line-height: 1.4;
+        text-align: right;
+      }
     }
-    &:nth-child(2n + 1) {
-      background-color: lighten($baseColor, 35%);
+
+    th {
+      background-color: lighten($baseColor, 30%);
+      font-weight: 600;
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    tr {
+      width: 100%;
+      &:nth-child(2n) {
+        background-color: white;
+      }
+      &:nth-child(2n + 1) {
+        background-color: lighten($baseColor, 35%);
+      }
     }
   }
 }
 
 @media screen and (max-width: 700px) {
   table,
+  tbody,
   tr,
   td {
     display: block;
