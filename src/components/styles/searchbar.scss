@@ -84,6 +84,10 @@
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
+
+    &.relevant {
+      font-weight: 800;
+    }
   }
   .autocomplete-items div:hover {
     /*when hovering an item:*/
