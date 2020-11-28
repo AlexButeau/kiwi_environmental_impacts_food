@@ -18,8 +18,6 @@ const Searchbar = () => {
       (item) => item.results[0]['Nom_du_Produit_en_Français'],
     );
     setSuggestionsList(arraySuggestions);
-    console.log(arraySuggestions);
-    console.log(suggestionsList);
   }, [apiData]);
 
   return (
