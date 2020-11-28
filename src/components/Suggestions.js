@@ -8,7 +8,7 @@ const Suggestions = () => {
       name: 'Pizza margarita',
       id: 25404,
       imgUrl:
-        'https://cdn.pixabay.com/photo/2015/10/17/20/22/margherita-pizza-993274_1280.jpg',
+        'https://cdn.pixabay.com/photo/2020/01/27/12/56/cheese-4797173_1280.jpg',
     },
     {
       name: 'Boeuf bourguignon',
