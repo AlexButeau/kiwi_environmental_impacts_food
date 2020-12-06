@@ -4,6 +4,7 @@ import { ApiDataContext } from './contexts/ApiDataContext';
 const Searchbar = () => {
   const { apiData, fetchApiDataQuery } = useContext(ApiDataContext);
   const [query, setQuery] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [suggestionsList, setSuggestionsList] = useState([]);
 
   const handleChange = (e) => {
