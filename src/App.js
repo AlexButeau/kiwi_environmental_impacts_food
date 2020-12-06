@@ -21,7 +21,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/contact" component={Contact} />
-            <Route path="/:id" component={ProductDetails} />
+            <Route path="products/:id" component={ProductDetails} />
           </Switch>
         </ApiDataContextProvider>
         <Footer />

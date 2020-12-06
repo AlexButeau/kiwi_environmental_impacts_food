@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
       }}
     >
       <div className="overlay">
-        <Link to={`/${productId}`}> {productName}</Link>
+        <Link to={`products/${productId}`}> {productName}</Link>
       </div>
     </div>
   );
