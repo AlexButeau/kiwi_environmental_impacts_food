@@ -146,6 +146,8 @@ export function Searchbar() {
           to={`/products/${selection.id}`}
           onClick={() => {
             setShowList(false);
+            setSuggestionsList([]);
+            setQuery(() => '');
           }}
         >
           {' '}
