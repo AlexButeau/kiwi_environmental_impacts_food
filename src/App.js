@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import './App.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
@@ -10,21 +11,22 @@ import ApiDataContextProvider from './components/contexts/ApiDataContext';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <ApiDataContextProvider>
-        {/* not sure about the placement yet */}
-        <Searchbar />
-        <Router>
+    <Router>
+      <div className="App">
+        <Header />
+        <ApiDataContextProvider>
+          {/* not sure about the placement yet */}
+          <Searchbar />
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/contact" component={Contact} />
-            <Route path="products/:id" component={ProductDetails} />
+            <Route path="/products/:id" component={ProductDetails} />
           </Switch>
-        </Router>
-      </ApiDataContextProvider>
-      <Footer />
-    </div>
+        </ApiDataContextProvider>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

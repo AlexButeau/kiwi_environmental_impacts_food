@@ -8,7 +8,7 @@ const ProductDetails = ({
     params: { id },
   },
 }) => {
-  const { apiData, fetchApiDataId } = useContext(ApiDataContext);
+  const { apiDataId, fetchApiDataId } = useContext(ApiDataContext);
   const [productDetails, setProductDetails] = useState({
     productName: '',
     DQR: 0,
@@ -20,35 +20,35 @@ const ProductDetails = ({
   // fetching the ap data for this specific product
   useEffect(() => {
     fetchApiDataId(id);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
-    if (apiData.length > 0) {
+    if (apiDataId.length > 0) {
       const stringScore = (
         Math.round(
-          apiData[0].results[0]['Score_unique_EF_(mPt/kg_de_produit)'] * 100,
+          apiDataId[0].results[0]['Score_unique_EF_(mPt/kg_de_produit)'] * 100,
         ) / 100
       ).toFixed(2);
       setProductDetails({
-        productName: apiData[0].results[0].Nom_du_Produit_en_Français,
+        productName: apiDataId[0].results[0].Nom_du_Produit_en_Français,
         DQR:
-          apiData[0].results[0][
+          apiDataId[0].results[0][
             'DQR_-_Note_de_qualité_de_la_donnée_(1_excellente___5_très_faible)'
           ],
         globalScore: Number(stringScore),
-        plane: apiData[0].results[0]['Transport_par_avion_(1___par_avion)'],
+        plane: apiDataId[0].results[0]['Transport_par_avion_(1___par_avion)'],
         indicateurs: [
           {
             indicateur: 'Occupation du sol',
             unit: 'Pt',
             value:
-              apiData[0].results[0]['Utilisation_du_sol_(Pt/kg_de_produit)'],
+              apiDataId[0].results[0]['Utilisation_du_sol_(Pt/kg_de_produit)'],
           },
           {
             indicateur: 'Eutrophisation terrestre',
             unit: 'mol N eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Eutrophisation_terreste_(mol_N_eq/kg_de_produit)'
               ],
           },
@@ -56,7 +56,7 @@ const ProductDetails = ({
             indicateur: 'Acidification terrestre et eaux douces',
             unit: 'mol H+ eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Acidification_terrestre_et_eaux_douces_(mol_H+_eq/kg_de_produit)'
               ],
           },
@@ -64,7 +64,7 @@ const ProductDetails = ({
             indicateur: 'Épuisement des ressources minéraux',
             unit: 'E-06 kg Sb eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Épuisement_des_ressources_minéraux_(E-06_kg_Sb_eq/kg_de_produit)'
               ],
           },
@@ -72,7 +72,7 @@ const ProductDetails = ({
             indicateur: 'Particules',
             unit: 'E-06 disease inc',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Particules_(E-06_disease_inc_/kg_de_produit)'
               ],
           },
@@ -80,7 +80,7 @@ const ProductDetails = ({
             indicateur: "Appauvrissement de la couche d'ozone",
             unit: 'E-06 kg CVC11 eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 "Appauvrissement_de_la_couche_d'ozone_(E-06_kg_CVC11_eq/kg_de_produit)"
               ],
           },
@@ -88,7 +88,7 @@ const ProductDetails = ({
             indicateur: 'Eutrophisation marine',
             unit: 'E-03 kg N eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Eutrophisation_marine_(E-03_kg_N_eq/kg_de_produit)'
               ],
           },
@@ -96,7 +96,7 @@ const ProductDetails = ({
             indicateur: 'Épuisement des ressources en eau',
             unit: 'm3 épuisés',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Épuisement_des_ressources_eau_(m3_depriv_/kg_de_produit)'
               ],
           },
@@ -104,7 +104,7 @@ const ProductDetails = ({
             indicateur: "Écotoxicité pour écosystèmes aquatiques d'eau_douce",
             unit: 'CTUe',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 "Écotoxicité_pour_écosystèmes_aquatiques_d'eau_douce_(CTUe/kg_de_produit)"
               ],
           },
@@ -112,7 +112,7 @@ const ProductDetails = ({
             indicateur: 'Changement climatique',
             unit: 'kg CO2 eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Changement_climatique_(kg_CO2_eq/kg_de_produit)'
               ],
           },
@@ -120,7 +120,7 @@ const ProductDetails = ({
             indicateur: 'Épuisement des ressources énergétiques',
             unit: 'MJ',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Épuisement_des_ressources_énergétiques_(MJ/kg_de_produit)'
               ],
           },
@@ -128,7 +128,7 @@ const ProductDetails = ({
             indicateur: 'Rayonnements ionisants',
             unit: 'kBq U-235 eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Rayonnements_ionisants_(kBq_U-235_eq/kg_de_produit)'
               ],
           },
@@ -136,14 +136,14 @@ const ProductDetails = ({
             indicateur: 'Eutrophisation des eaux douces',
             unit: 'E-03 kg P eq',
             value:
-              apiData[0].results[0][
+              apiDataId[0].results[0][
                 'Eutrophisation_eaux_douces_(E-03_kg_P_eq/kg_de_produit)'
               ],
           },
         ],
       });
     }
-  }, [apiData]);
+  }, [apiDataId]);
 
   /* {
   "total": 1,
@@ -217,7 +217,7 @@ const ProductDetails = ({
 
             {productDetails.indicateurs &&
               productDetails.indicateurs.map((product) => (
-                <tr>
+                <tr key={product.indicateur}>
                   <td>{product.indicateur}</td>
                   <td>{product.unit}</td>
                   <td>{(Math.round(product.value * 100) / 100).toFixed(2)}</td>

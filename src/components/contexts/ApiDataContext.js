@@ -2,14 +2,11 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
-export const ApiDataContext = createContext({
-  apiData: [],
-  setApiData: () => {},
-  fetchApiData: () => {},
-});
+export const ApiDataContext = createContext();
 
 export default function ApiDataContextProvider({ children }) {
-  const [apiData, setApiData] = useState([]);
+  const [apiDataQuery, setApiDataQuery] = useState([]);
+  const [apiDataId, setApiDataId] = useState([]);
 
   const fetchApiDataQuery = (query) => {
     const { CancelToken } = axios;
@@ -23,7 +20,7 @@ export default function ApiDataContextProvider({ children }) {
         },
       )
       .then((response) => response.data)
-      .then((data) => setApiData(data.aggs))
+      .then((data) => setApiDataQuery(data.aggs))
       .catch((err) => {
         if (axios.isCancel(err)) {
           console.log('Request canceled', err.message);
@@ -47,7 +44,7 @@ export default function ApiDataContextProvider({ children }) {
         },
       )
       .then((response) => response.data)
-      .then((data) => setApiData(data.aggs))
+      .then((data) => setApiDataId(data.aggs))
       .catch((err) => {
         if (axios.isCancel(err)) {
           console.log('Request canceled', err.message);
@@ -63,7 +60,12 @@ export default function ApiDataContextProvider({ children }) {
 
   return (
     <ApiDataContext.Provider
-      value={{ apiData, fetchApiDataQuery, fetchApiDataId }}
+      value={{
+        apiDataQuery,
+        apiDataId,
+        fetchApiDataQuery,
+        fetchApiDataId,
+      }}
     >
       {children}
     </ApiDataContext.Provider>
