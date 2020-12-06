@@ -143,7 +143,7 @@ export function Searchbar() {
         </div>
 
         <Link
-          to={`products/${selection.id}`}
+          to={`/products/${selection.id}`}
           onClick={() => {
             setShowList(false);
           }}
