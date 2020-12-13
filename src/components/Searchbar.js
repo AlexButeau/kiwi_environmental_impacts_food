@@ -3,7 +3,13 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext, useEffect, useState, useDebugValue } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useState,
+  useDebugValue,
+  useRef,
+} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { ApiDataContext } from './contexts/ApiDataContext';
 import './styles/searchbar.scss';
@@ -23,9 +29,14 @@ export function Searchbar() {
     [],
     'suggestionsList',
   );
+  const [enableSubmit, setEnableSubmit] = useStateWithLabel(
+    false,
+    'enable submit',
+  );
+  const submitButton = useRef(null);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setEnableSubmit(false);
     setQuery(() => e.target.value);
   };
 
@@ -39,7 +50,7 @@ export function Searchbar() {
     const queryTerms = query
       .split(' ')
       .filter((term) => term.length > 2)
-      .map((term) => term.toLowerCase()); // provides with an array of the words
+      .map((term) => term.toLowerCase()); // provides an array of the query terms
 
     // console.log(
     //   apiData.map((item) => item.results[0]['Nom_du_Produit_en_Français']),
@@ -122,18 +133,11 @@ export function Searchbar() {
                     item.name.toLowerCase().includes(query) ? 'relevant' : ''
                   }
                   onClick={() => {
-                    // submitButton.current.focus();
-                    // setShowList(false);
-                    // setAddress((prevValue) => ({
-                    //   ...prevValue,
-                    //   street: e.target.innerHTML,
-                    //   coordinates: item.geometry.coordinates,
-                    // }));
+                    submitButton.current.focus();
                     setSelection(item);
                     setQuery(item.name);
-                    // setSuggestionsList(null);
                     setShowList(false);
-                    // setEnableSubmit(true);
+                    setEnableSubmit(true);
                   }}
                 >
                   {item.name}
@@ -151,7 +155,14 @@ export function Searchbar() {
           }}
         >
           {' '}
-          <input type="submit" value="Valider" />{' '}
+          <input
+            ref={submitButton}
+            type="submit"
+            disabled={!enableSubmit}
+            value="Valider"
+            title="Sélectionnez un aliment dans la liste pour pouvoir valider"
+            onFocus={() => setShowList(false)}
+          />{' '}
         </Link>
       </form>
     </div>

@@ -3,15 +3,22 @@
 #search-bar {
   form {
     display: flex;
+    justify-content: center;
     align-items: flex-end;
     flex-wrap: wrap;
+    background-color: $darker;
+    padding: 20px 0;
+  }
+
+  label {
+    color: #f1f1f1;
   }
 
   .autocomplete {
     /*the container must be positioned relative:*/
     position: relative;
     display: inline-block;
-    width: 250px;
+    width: 500px;
   }
 
   .label-code {
@@ -22,7 +29,8 @@
   input {
     border: 1px solid transparent;
     background-color: #f1f1f1;
-    padding: 10px;
+    padding: 10px 8px;
+    border-radius: 10px;
     outline: none;
     font-size: 16px;
     &:invalid {
@@ -31,9 +39,7 @@
   }
   input[type='text'] {
     background-color: white;
-    border: 1px solid grey;
-    border-radius: 10px;
-    width: 250px;
+    width: 500px;
     margin-right: 10px;
     &:disabled {
       background-color: lightgray;
@@ -42,17 +48,15 @@
       }
     }
   }
-  input[type='submit'],
-  .button-geoloc {
-    background-color: #2d414d;
+  input[type='submit'] {
+    background-color: $primary;
     margin-bottom: 0.5rem;
+    margin-left: 10px;
     text-align: center;
     width: min-content;
     white-space: nowrap;
     color: #fff;
     height: min-content;
-    padding: 10px 8px;
-    border-radius: 10px;
 
     border: 1px solid transparent;
     &:hover {
