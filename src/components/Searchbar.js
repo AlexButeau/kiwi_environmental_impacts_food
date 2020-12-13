@@ -149,6 +149,7 @@ export function Searchbar() {
         <Link
           to={`/products/${selection.id}`}
           onClick={() => {
+            setEnableSubmit(false);
             setShowList(false);
             setSuggestionsList([]);
             setQuery(() => '');
@@ -162,7 +163,7 @@ export function Searchbar() {
             value="Valider"
             title="Sélectionnez un aliment dans la liste pour pouvoir valider"
             onFocus={() => setShowList(false)}
-          />{' '}
+          />
         </Link>
       </form>
     </div>

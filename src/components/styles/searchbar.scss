@@ -60,7 +60,9 @@
 
     border: 1px solid transparent;
     &:hover {
-      text-decoration: underline;
+      transform: translate(-2px, 0px);
+      font-weight: bolder;
+
       cursor: pointer;
     }
     &:disabled {
